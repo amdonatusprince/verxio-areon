@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --scrollbar-foreground: #00ADEF;
+  --scrollbar-background: transparent;
+}
+
+.authImg {
+  /* background-image: url("../assets/AuthBgImg.png"); */
+  background: linear-gradient(
+      0deg,
+      rgba(46, 49, 144, 0.74) 0%,
+      rgba(46, 49, 144, 0.74) 100%
+    ),
+    url("../assets/AuthBgImg.png"), lightgray 50% / cover no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.authText {
+  background: linear-gradient(
+    95deg,
+    #fff -0.96%,
+    #7576b2 59.61%,
+    #48498d 83.07%,
+    #3c3d7c 100.21%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.modalBg {
+  /* Shadow / Small */
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.settings-bg-img {
+  background: url('../assets/settings-hero2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+}
+
+
+.overflow-scroll::-webkit-scrollbar,
+.overflow-y-scroll::-webkit-scrollbar,
+.overflow-x-scroll::-webkit-scrollbar {
+  width: 0.2em;
+  height: 0.2em;
+  border-radius: 8px;
+}
+
+.overflow-scroll::-webkit-scrollbar-thumb,
+.overflow-y-scroll::-webkit-scrollbar-thumb,
+.overflow-x-scroll::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-foreground);
+  border-radius: 8px;
+}
+
+.overflow-scroll::-webkit-scrollbar-track,
+.overflow-y-scroll::-webkit-scrollbar-track,
+.overflow-x-scroll::-webkit-scrollbar-track {
+  background: var(--scrollbar-background);
+  border-radius: 8px;
+}
+
+.overflow-x-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-hidden.overflow-scroll::-webkit-scrollbar,
+.scroll-hidden.overflow-y-scroll::-webkit-scrollbar,
+.scroll-hidden.overflow-x-scroll::-webkit-scrollbar {
+  display: none;
+}
