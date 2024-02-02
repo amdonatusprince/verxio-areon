@@ -201,7 +201,7 @@ const Page = () => {
               name="bio"
               className="border outline-none rounded-[4px] border-black p-2 max-h-[90px]"
             ></textarea>
-          </div
+          </div>
 
           <div className="flex flex-col gap-3 text-16 ">
             <label htmlFor="email">Contact Email</label>

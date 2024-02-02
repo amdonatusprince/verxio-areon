@@ -29,7 +29,7 @@ const Page = () => {
     write: submitTaskWrite,
     isError: isSubmittingTaskError,
   } = useContractWrite({
-    address: "0xA2A3b38f6088d729a1454BCD2863ce87B9953079",
+    address: "0x596661d498cb0ec4fde296fe318123834fc0dbbf",
     abi: VerxioSubmitTaskABI,
     functionName: "submitTask",
     args: [
@@ -51,9 +51,6 @@ const Page = () => {
   
     try {
       const transaction = submitTaskWrite(); 
-      console.log("Transaction submitted:", transaction);
-      console.log("Task upload successful!...", submitTaskData);
-  
       // Now you can perform additional submit logic, e.g., send data to the server
     } catch (error) {
       console.error("File Error:", error);

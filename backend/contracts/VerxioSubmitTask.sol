@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+import "./VerxioUserProfile.sol";
+
 contract TaskSubmissionContract {
 
     address public owner;
@@ -15,6 +17,10 @@ contract TaskSubmissionContract {
     struct Task {
         string taskId;
         address jobPoster;
+        string jobPosterFirstName;
+        string jobPosterLastName;
+        string jobPosterBio;
+        string jobPosterProfileUrl;
         string jobTitle;
         string jobDescription;
         string jobResponsibilities;
@@ -27,6 +33,7 @@ contract TaskSubmissionContract {
         TaskStatus status;
         uint upvotes;
         uint downvotes;
+        uint postedTime;
     }
 
     mapping(string => Comment[]) private taskComments;
@@ -48,8 +55,11 @@ contract TaskSubmissionContract {
         _;
     }
 
-    constructor() {
+    VerxioUserProfile public userProfileContract;
+
+    constructor(address _userProfileContract) {
         owner = msg.sender;
+        userProfileContract = VerxioUserProfile(_userProfileContract);
     }
 
     function submitTask(
@@ -64,9 +74,17 @@ contract TaskSubmissionContract {
         string memory _jobResponsibilities,
         string memory _jobRequirements
     ) public {
+        // Get job poster's profile information
+        VerxioUserProfile.Profile memory jobPosterProfile = userProfileContract.getProfile(msg.sender);
+
+        // Create a new task with job poster's profile information
         Task memory newTask = Task({
             taskId: _taskId,
             jobPoster: msg.sender,
+            jobPosterFirstName: jobPosterProfile.firstName,
+            jobPosterLastName: jobPosterProfile.lastName,
+            jobPosterBio: jobPosterProfile.bio,
+            jobPosterProfileUrl: jobPosterProfile.profilePictureUrl,
             jobTitle: _jobTitle,
             jobDescription: _jobDescription,
             jobResponsibilities: _jobResponsibilities,
@@ -78,11 +96,12 @@ contract TaskSubmissionContract {
             fileDocUrl: _fileDocUrl,
             status: TaskStatus.Open,
             upvotes: 0,
-            downvotes: 0
+            downvotes: 0,
+            postedTime: block.timestamp
         });
 
         tasks[_taskId] = newTask;
-        taskIds.push(_taskId);  
+        taskIds.push(_taskId);
 
         emit TaskSubmitted(_taskId, msg.sender, newTask.jobTitle);
     }

@@ -17,7 +17,7 @@ const Page = () => {
 
 
   const { data, isError, isLoading, refetch } = useContractRead({
-    address: '0xa2a3b38f6088d729a1454bcd2863ce87b9953079',
+    address: '0x596661d498cb0ec4fde296fe318123834fc0dbbf',
     abi: VerxioSubmitTaskABI,
     functionName: 'getAllTasks'
   });
