@@ -1,7 +1,7 @@
 # Verxio Contracts Deployed on the Areon Network Testnet
 ---
 ### Verxio Task Submission Contract Address
-0xa2a3b38f6088d729a1454bcd2863ce87b9953079
+0x596661d498cb0ec4fde296fe318123834fc0dbbf
 
 ### Verxio Proposal Submission Contract Address
 0xbfe9cf37fec4455cfcbd8f74417e67d8b487d331
