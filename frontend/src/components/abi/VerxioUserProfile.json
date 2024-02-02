@@ -1,0 +1,167 @@
+{
+    "VerxioUserProfileABI": [
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_firstName",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_lastName",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_phoneNumber",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_email",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_websiteUrl",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_profilePictureUrl",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_documentUrl",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_bio",
+                    "type": "string"
+                }
+            ],
+            "name": "updateProfile",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "userAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "getProfile",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "string",
+                            "name": "firstName",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "lastName",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "phoneNumber",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "email",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "websiteUrl",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "profilePictureUrl",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "documentUrl",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "bio",
+                            "type": "string"
+                        }
+                    ],
+                    "internalType": "struct VerxioUserProfile.Profile",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "profiles",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "firstName",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "lastName",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "phoneNumber",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "email",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "websiteUrl",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "profilePictureUrl",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "documentUrl",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "bio",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ]
+}

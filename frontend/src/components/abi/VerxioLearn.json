@@ -1,0 +1,481 @@
+{
+    "VerxioLearnABI": [
+        {
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "courseId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "commenter",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "comment",
+                    "type": "string"
+                }
+            ],
+            "name": "CourseCommented",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "courseId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "voter",
+                    "type": "address"
+                }
+            ],
+            "name": "CourseDownvoted",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "courseId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "instructor",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "name",
+                    "type": "string"
+                }
+            ],
+            "name": "CourseUploaded",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "courseId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "voter",
+                    "type": "address"
+                }
+            ],
+            "name": "CourseUpvoted",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "courseId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "student",
+                    "type": "address"
+                }
+            ],
+            "name": "LessonWatched",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "courseId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "student",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "bool",
+                    "name": "isCorrect",
+                    "type": "bool"
+                }
+            ],
+            "name": "QuizAnswered",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "user",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "int256",
+                    "name": "pointsChange",
+                    "type": "int256"
+                }
+            ],
+            "name": "RewardPointsUpdated",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_courseId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_quizNumber",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_chosenOption",
+                    "type": "uint256"
+                }
+            ],
+            "name": "answerQuiz",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_courseId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_comment",
+                    "type": "string"
+                }
+            ],
+            "name": "commentCourse",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "courseCounter",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "courses",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "courseId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "instructor",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "description",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "videoUrl",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "upvotes",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "downvotes",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "rewardPointsForQuiz",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_courseId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "downvoteCourse",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "owner",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_description",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_videoUrl",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string[]",
+                    "name": "_questions",
+                    "type": "string[]"
+                },
+                {
+                    "internalType": "string[][]",
+                    "name": "_options",
+                    "type": "string[][]"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "_correctOptions",
+                    "type": "uint256[]"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_rewardPointsForQuiz",
+                    "type": "uint256"
+                }
+            ],
+            "name": "uploadCourse",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_courseId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "upvoteCourse",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "userPoints",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "viewAllCourses",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "uint256",
+                            "name": "courseId",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "instructor",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "description",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "videoUrl",
+                            "type": "string"
+                        },
+                        {
+                            "components": [
+                                {
+                                    "internalType": "string",
+                                    "name": "question",
+                                    "type": "string"
+                                },
+                                {
+                                    "internalType": "string[]",
+                                    "name": "options",
+                                    "type": "string[]"
+                                },
+                                {
+                                    "internalType": "uint256",
+                                    "name": "correctOption",
+                                    "type": "uint256"
+                                }
+                            ],
+                            "internalType": "struct VerxioLearnContract.Quiz[]",
+                            "name": "quizzes",
+                            "type": "tuple[]"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "upvotes",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "downvotes",
+                            "type": "uint256"
+                        },
+                        {
+                            "components": [
+                                {
+                                    "internalType": "address",
+                                    "name": "commenter",
+                                    "type": "address"
+                                },
+                                {
+                                    "internalType": "string",
+                                    "name": "comment",
+                                    "type": "string"
+                                }
+                            ],
+                            "internalType": "struct VerxioLearnContract.Comment[]",
+                            "name": "comments",
+                            "type": "tuple[]"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "rewardPointsForQuiz",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address[]",
+                            "name": "voters",
+                            "type": "address[]"
+                        }
+                    ],
+                    "internalType": "struct VerxioLearnContract.Course[]",
+                    "name": "",
+                    "type": "tuple[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_courseId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "watchLesson",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ]
+}

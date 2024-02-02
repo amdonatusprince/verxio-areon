@@ -4,6 +4,8 @@ import Button from "../../../components/Button";
 import { nanoid } from "nanoid";
 import {
   useContractWrite,
+  usePrepareContractWrite,
+  useContractRead,
 } from "wagmi";
 import { VerxioSubmitTaskABI } from "../../../components/abi/VerxioSubmitTask.json";
 
@@ -20,43 +22,72 @@ const Page = () => {
   const [totalPeople, setTotalPeople] = useState();
   const [amount, setAmount] = useState();
   const [fileDoc, setFileDoc] = useState();
+
+
   const taskID = nanoid();
 
-  const {
-    data: submitTaskData,
-    isLoading: isSubmittingTask,
-    isSuccess: isTaskSubmitted,
-    write: submitTaskWrite,
-    isError: isSubmittingTaskError,
-  } = useContractWrite({
-    address: "0xA2A3b38f6088d729a1454BCD2863ce87B9953079",
-    abi: VerxioSubmitTaskABI,
-    functionName: "submitTask",
-    args: [
-      taskID,
-      title,
-      description,
-      "fileDoc-url.com",
-      totalPeople,
-      amount,
-      jobType,
-      paymentMethod,
-      responsibilities,
-      requirements,
-    ],
-  });
+  // const { config } = usePrepareContractWrite({
+  //   address: "0xa2a3b38f6088d729a1454bcd2863ce87b9953079",
+  //   abi: VerxioSubmitTaskABI,
+  //   functionName: "submitTask",
+  //   args: [
+  //     taskID,
+  //     title,
+  //     description,
+  //     "fileDoc-url.com",
+  //     totalPeople,
+  //     amount,
+  //     jobType,
+  //     paymentMethod,
+  //     responsibilities,
+  //     requirements,
+  //   ],
+  // });
+
+
+  // const {
+  //   data: submitTaskData,
+  //   isLoading: isSubmittingTask,
+  //   isSuccess: isTaskSubmitted,
+  //   write: submitTaskWrite,
+  //   isError: isSubmittingTaskError,
+  // } = useContractWrite(config);
+
+  // // Get Task Integration
+
+  // const {
+  //   data: getTaskData,
+  //   isError: isGettingProfileError,
+  //   isLoading: isGettingTask,
+  // } = useContractRead({
+  //   address: "0xa2a3b38f6088d729a1454bcd2863ce87b9953079",
+  //   abi: VerxioSubmitTaskABI,
+  //   functionName: "getTask",
+  //   args: [taskID],
+  //   watch: true,
+
+  //   onSuccess(data) {
+  //     console.log("Success: TaskData", getTaskData);
+  //   },
+  //   onError(error) {
+  //     console.log("Error", error);
+  //     console.log("Getting Tasking Error", isGettingProfileError);
+  //   },
+  // });
 
   const handleSubmitTask = async (e) => {
     e.preventDefault();
-  
-    try {
-      const transaction = submitTaskWrite(); 
-      console.log("Transaction submitted:", transaction);
-      console.log("Task upload successful!...", submitTaskData);
-  
-      // Now you can perform additional submit logic, e.g., send data to the server
-    } catch (error) {
-      console.error("File Error:", error);
+    {
+      let fileURL;
+      try {
+        const transaction = submitTaskWrite();
+        console.log("Transaction submitted:", transaction);
+        console.log("Task upload successful!...", submitTaskData);
+
+        // Now you can perform additional submit logic, e.g., send data to the server
+      } catch (error) {
+        console.error("File Error:", error);
+      }
     }
   };
 
@@ -92,7 +123,7 @@ const Page = () => {
             cols="30"
             rows="10"
             name="description"
-            className="border outline-none rounded-[4px] border-black p-2 max-h-[120px]"
+            className="border outline-none rounded-[4px] border-black p-2"
           ></textarea>
         </div>
 
@@ -106,7 +137,7 @@ const Page = () => {
             cols="30"
             rows="10"
             name="responsibilities"
-            className="border outline-none rounded-[4px] border-black p-2 max-h-[120px]"
+            className="border outline-none rounded-[4px] border-black p-2 max-h-[90px]"
           ></textarea>
         </div>
 
@@ -120,7 +151,7 @@ const Page = () => {
             cols="30"
             rows="10"
             name="requirements"
-            className="border outline-none rounded-[4px] border-black p-2 max-h-[120px]"
+            className="border outline-none rounded-[4px] border-black p-2 max-h-[90px]"
           ></textarea>
         </div>
 
@@ -208,8 +239,8 @@ const Page = () => {
 
           {isSubmittingTaskError && <p>There is an Error in Submitting Task</p>}
 
-          {isTaskSubmitted  && (
-            <p>Task Submitted Successfully!</p>
+          {isTaskSubmitted && isGettingTask && (
+            <p>Task Submitted: Getting Task Data</p>
           )}
         </article>
       </form>

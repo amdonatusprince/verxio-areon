@@ -1,54 +1,29 @@
 "use client";
 
 import JobCard from "../../../components/jobComponent/JobCard";
-import { useContext, useEffect, useState,  React } from "react";
-import { listDocs } from "@junobuild/core";
-import { authSubscribe } from "@junobuild/core";
-
-import { AuthContext } from "../../../components/auth";
+import { useEffect, useState,  React } from "react";
+import { 
+  useSimulateContract,
+  useAccount,
+  useReadContract,
+  useContractRead
+ } from 'wagmi'
+ import {VerxioSubmitTaskABI} from "../../../components/abi/VerxioSubmitTask.json"
 import { useNav } from "../../../context/nav_context";
 
 const Page = () => {
-  // const { user } = useContext(AuthContext);
-
-  // const {user} = useNav()
-  // const [items, setItems] = useState([]);
-
-  // console.log(user)
-
-  // const {jobDetails, setJobDetails} = useNav()
+  const {user} = useNav()
   const [jobs, setJobs] = useState([])
-  
-  const [user, setUser] = useState();
 
-  const list = async () => {
-    try {
-      const { items } = await listDocs({
-        collection: "publish-task",
-      });
-      setJobs(items);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
-  useEffect(() => {
-    const unsubscribe = authSubscribe((newUser) => {
-      setUser(newUser);
-    });
+  const { data, isError, isLoading, refetch } = useContractRead({
+    address: '0xa2a3b38f6088d729a1454bcd2863ce87b9953079',
+    abi: VerxioSubmitTaskABI,
+    functionName: 'getAllTasks'
+  });
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  console.log("Showing job results: ", data)
 
-  useEffect(() => {
-    if (user) {
-      list();
-    }
-  }, [user]);
-
-  // console.log("List of document: ", jobs);
 
   return (
     <>

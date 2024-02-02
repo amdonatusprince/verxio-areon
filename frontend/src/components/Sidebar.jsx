@@ -1,42 +1,27 @@
 "use client";
 import React from "react";
-import { initJuno } from "@junobuild/core";
-import { authSubscribe } from "@junobuild/core";
 import LoginButton from "./login";
 import LogoutButton from "./logout";
+import Connect from "./connect"
 import { useEffect, useState } from "react";
 import { Logo, SidebarMenuItem } from "./atoms";
 import Image from "next/image";
 import AxiosLogo from "../assets/AxiosLogo.svg";
 import { useNav } from "../context/nav_context";
 import { NavigationItems } from "../lib/data/sideBarData";
+import { getAccount } from '@wagmi/core'
 
 const Sidebar = () => {
-
-  
 
   const { isOpen, toggleNav, user, setUser } = useNav();
 
   useEffect(() => {
-    (async () =>
-      await initJuno({
-        satelliteId: "tw7oh-ryaaa-aaaal-adoya-cai",
-      }))();
+    const user = getAccount();
+    if(user){
+      setUser(user)
+    }
   }, []);
 
-  authSubscribe((user) => {
-    console.log("Authentication state changed:", user);
-    if(user){
-      const userObject = {
-        owner: user.owner,
-        key: user.key,
-      };
-      setUser(userObject);
-    }
-  });
-  
-
-  console.log("User Found", user)
 
   return (
     <>
@@ -57,8 +42,8 @@ const Sidebar = () => {
               // <div></div>
             ))}
           </ul>
-
-          {user ? <LogoutButton /> : <LoginButton />}
+              <Connect/>
+          {/* {user ? <LogoutButton /> : <LoginButton />} */}
 
           <button className=" flex items-center  mx-auto w-[80%] gap-3">
             <p className="text-white text-[12px]">Powered by</p>

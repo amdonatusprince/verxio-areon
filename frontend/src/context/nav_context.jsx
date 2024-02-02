@@ -8,7 +8,9 @@ const NavContext = createContext(undefined);
 export const NavProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState('');
+  const [userProfile3, setUserProfile3] = useState('');
   const [jobDetails, setJobDetails] = useState({});
+  const [userProfileDetail, setUserProfileDetail] = useState({});
 
 
 
@@ -21,7 +23,19 @@ export const NavProvider = ({ children }) => {
   };
 
   return (
-    <NavContext.Provider value={{ isOpen, toggleNav, closeNav, user, setUser, jobDetails, setJobDetails}}>
+    <NavContext.Provider
+      value={{
+        isOpen,
+        toggleNav,
+        closeNav,
+        user,
+        setUser,
+        jobDetails,
+        setJobDetails,
+        userProfile3,
+        setUserProfile3,
+      }}
+    >
       {children}
     </NavContext.Provider>
   );

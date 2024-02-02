@@ -3,6 +3,7 @@ import { Lato, Poppins, Inter } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import ReduxProvider from "../components/reduxProvider";
 import { NavProvider } from "../context/nav_context";
+import WagmiProviders from "../components/wagmiProviders";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,7 +23,9 @@ export default async function RootLayout({ children }) {
       <body className={`${inter.variable} font-inter`}>
         <NavProvider>
           <ReduxProvider>
-            <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+            <WagmiProviders>
+              <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+            </WagmiProviders>
           </ReduxProvider>
         </NavProvider>
       </body>

@@ -9,9 +9,12 @@ import ICP from "../../assets/icp-logo.svg";
 import Solana from "../../assets/solana-logo.svg";
 import Button from "../Button";
 import { setJobDetails } from "../../../slices/jobSlice";
-import Link from "next/link";
-import { listDocs } from "@junobuild/core";
-import { authSubscribe } from "@junobuild/core";
+import {
+  useContractWrite,
+  usePrepareContractWrite,
+  useWaitForTransaction,
+  useContractRead,
+} from "wagmi";
 import { useNav } from "../../context/nav_context";
 import { useSelector, useDispatch } from "react-redux";
 

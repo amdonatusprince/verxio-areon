@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
+import LoadingSpinner from "../components/loadingSpinner";
 
 const Button = ({
   href,
@@ -13,6 +14,7 @@ const Button = ({
   name,
   onClick,
   icon,
+  isLoading,
   type,
   ...props
 }) => {
@@ -37,6 +39,7 @@ const Button = ({
     </Link>
   ) : (
     <button
+      disabled={isLoading}
       type={type}
       {...props}
       className={twMerge(
@@ -52,7 +55,7 @@ const Button = ({
       )}
       onClick={onClick}
     >
-      {name}
+      {isLoading ? <LoadingSpinner /> : name}
       {icon && <Image src={icon} className="w-4" alt="icon" />}
     </button>
   );
