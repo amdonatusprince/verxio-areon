@@ -22,6 +22,7 @@ const Page = () => {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  const [profileURL, setProfileURL] = useState("");
   const [websiteURL, setWebsiteURL] = useState("");
   const [userBIO, setUserBIO] = useState("");
 
@@ -29,11 +30,6 @@ const Page = () => {
   const user = getAccount();
   const userAddress = user.address;
   const { userProfileDetail, setUserProfileDetail } = useNav();
-
-  // Using default options
-const imageUrl = faker.image.urlLoremFlickr({ 
-  category: 'person'
-})
 
   // Gets UserProfile
   const { data: userProfile } = useContractRead({
@@ -65,7 +61,7 @@ const imageUrl = faker.image.urlLoremFlickr({
       phoneNumber,
       userEmail,
       websiteURL,
-      imageUrl,
+      profileURL,
       "document-testurl.com",
       userBIO,
     ],
@@ -102,19 +98,17 @@ const imageUrl = faker.image.urlLoremFlickr({
 
 
     {
-      console.log("Image Profile: ", selectedImage);
-      // console.log("Form values:", values);
       console.log("Uploading Files...");
-
       try {
+
+        const imageUrl = faker.image.urlLoremFlickr({ 
+          category: 'person'
+        })
+        setProfileURL(imageUrl)
         const transaction = updateProfileWrite();
         // Additional logic after the transaction is submitted
         console.log("Transaction submitted:", transaction);
-
         console.log("Task upload successful!...", updateProfileData);
-
-        // if (values.fileDoc !== undefined) {}
-
         console.log("Profile upload successful!...");
 
         setFirstName("");
