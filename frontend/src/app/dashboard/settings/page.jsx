@@ -12,7 +12,7 @@ import {
 } from "wagmi";
 import { VerxioUserProfileABI } from "../../../components/abi/VerxioUserProfile.json";
 import { getAccount } from "@wagmi/core";
-
+import { faker } from '@faker-js/faker';
 
 const Page = () => {
   const [loading, setLoading] = useState(false);
@@ -30,14 +30,17 @@ const Page = () => {
   const userAddress = user.address;
   const { userProfileDetail, setUserProfileDetail } = useNav();
 
+  // Using default options
+const imageUrl = faker.image.urlLoremFlickr({ 
+  category: 'person'
+})
+
   // Gets UserProfile
   const { data: userProfile } = useContractRead({
     address: "0x4838854e5150e4345fb4ae837e9fcca40d51f3fe",
     abi: VerxioUserProfileABI,
     functionName: "getProfile",
     args: [userAddress],
-
-    
     watch: true,
     onSuccess(data) {
       console.log("Success: UserProfile", data);
@@ -48,7 +51,6 @@ const Page = () => {
   });
 
   setUserProfileDetail(userProfile)
-  console.log("Showing user profile: ", userProfileDetail);
 
 
 
@@ -63,7 +65,7 @@ const Page = () => {
       phoneNumber,
       userEmail,
       websiteURL,
-      "profile-testurl.com",
+      imageUrl,
       "document-testurl.com",
       userBIO,
     ],
